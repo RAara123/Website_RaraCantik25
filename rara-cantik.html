@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rara Cantik Begete💕</title>
+<title>Rara Cantik Begete 💕</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -18,16 +18,18 @@ body{
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(135deg,#ffd6e8,#fff0f6,#ffe4ec);
     overflow-x:hidden;
+    position: relative;
+    min-height: 100vh;
 }
 
-/* Navbar */
+/* Navbar - lebih solid biar tidak transparan banget */
 .navbar{
-    background: rgba(255,255,255,0.75);
+    background: rgba(255,255,255,0.95);
     backdrop-filter: blur(15px);
     box-shadow:0 5px 20px rgba(0,0,0,0.08);
 }
 
-/* Hero - FIX #2: tambah padding-top supaya tidak tertutup navbar */
+/* Hero - dikasih padding top biar tidak ketutupan navbar */
 .hero{
     min-height:100vh;
     display:flex;
@@ -50,7 +52,6 @@ body{
     animation:fadeUp 1.4s ease;
 }
 
-/* FIX #3: hapus class btn dari button, styling standalone */
 .btn-pink{
     background: linear-gradient(to right,#ff4d88,#ff80ab);
     color:white;
@@ -61,28 +62,25 @@ body{
     margin-top:20px;
     box-shadow:0 10px 20px rgba(255,77,136,0.3);
     transition:0.3s;
-    cursor:pointer;
-    display:inline-block;
 }
 
 .btn-pink:hover{
     transform:translateY(-5px) scale(1.05);
 }
 
-/* FIX #1: Floating hearts - pakai fixed & mulai dari bawah, z-index di belakang konten */
+/* Floating hearts - lebih smooth */
 .heart{
-    position: fixed;
-    bottom: -50px;
+    position:fixed; /* biar floating terus meskipun di-scroll */
     color:#ff7aa2;
     font-size:25px;
-    animation:float 6s infinite linear;
+    animation:float 8s infinite linear;
     opacity:0.6;
-    z-index: 0;
-    pointer-events: none;
+    pointer-events: none; /* biar tidak mengganggu klik */
+    z-index: 9999;
 }
 
-/* FIX #5: Ganti nama class dari .card ke .custom-card supaya tidak bentrok Bootstrap */
-.custom-card{
+/* Cards */
+.card{
     border:none;
     border-radius:25px;
     padding:30px;
@@ -91,14 +89,8 @@ body{
     background:white;
 }
 
-.custom-card:hover{
+.card:hover{
     transform:translateY(-12px);
-}
-
-/* Pastikan semua konten tampil di atas hearts */
-nav, section, footer {
-    position: relative;
-    z-index: 1;
 }
 
 /* Footer */
@@ -107,10 +99,22 @@ footer{
     color:white;
 }
 
-/* Animation */
+/* Animations */
 @keyframes float{
-    0%{transform:translateY(0) rotate(0);}
-    100%{transform:translateY(-110vh) rotate(360deg);}
+    0%{
+        transform:translateY(100vh) rotate(0deg);
+        opacity:0;
+    }
+    10%{
+        opacity:0.7;
+    }
+    90%{
+        opacity:0.7;
+    }
+    100%{
+        transform:translateY(-10vh) rotate(360deg);
+        opacity:0;
+    }
 }
 
 @keyframes fadeDown{
@@ -123,21 +127,42 @@ footer{
     to{opacity:1;transform:translateY(0);}
 }
 
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 40px;
+    }
+    .hero p {
+        font-size: 16px;
+    }
+    .hero {
+        text-align: center;
+        padding-top: 100px;
+    }
+    .btn-pink {
+        margin-bottom: 30px;
+    }
+}
 </style>
 </head>
 <body>
 
-<!-- FIX #1: Floating Hearts - posisi fixed, mulai dari bawah layar -->
-<div class="heart" style="left:10%;">💖</div>
-<div class="heart" style="left:30%; animation-delay:2s;">💕</div>
-<div class="heart" style="left:50%; animation-delay:4s;">💗</div>
-<div class="heart" style="left:70%; animation-delay:1s;">💞</div>
-<div class="heart" style="left:90%; animation-delay:3s;">💓</div>
+<!-- Floating Hearts - lebih banyak dan variatif -->
+<div class="heart" style="left:5%; animation-delay:0s; animation-duration:7s;">💖</div>
+<div class="heart" style="left:15%; animation-delay:2s; animation-duration:9s;">💕</div>
+<div class="heart" style="left:25%; animation-delay:4s; animation-duration:8s;">💗</div>
+<div class="heart" style="left:35%; animation-delay:1s; animation-duration:10s;">💞</div>
+<div class="heart" style="left:45%; animation-delay:5s; animation-duration:7.5s;">💓</div>
+<div class="heart" style="left:55%; animation-delay:3s; animation-duration:8.5s;">💝</div>
+<div class="heart" style="left:65%; animation-delay:6s; animation-duration:9.5s;">🌸</div>
+<div class="heart" style="left:75%; animation-delay:0.5s; animation-duration:7.8s;">✨</div>
+<div class="heart" style="left:85%; animation-delay:3.5s; animation-duration:8.2s;">💖</div>
+<div class="heart" style="left:95%; animation-delay:2.5s; animation-duration:9s;">💕</div>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top">
 <div class="container">
-<a class="navbar-brand fw-bold text-danger" href="#">Sweet Girl</a>
+<a class="navbar-brand fw-bold text-danger" href="#">✨ Sweet Girl ✨</a>
 
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
 <span class="navbar-toggler-icon"></span>
@@ -145,75 +170,124 @@ footer{
 
 <div class="collapse navbar-collapse" id="menu">
 <ul class="navbar-nav ms-auto">
-<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-<li class="nav-item"><a class="nav-link" href="#">Gallery</a></li>
-<li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+<li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+<li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
 </ul>
 </div>
 </div>
 </nav>
 
-<!-- Hero -->
-<section class="hero">
+<!-- Hero Section -->
+<section id="home" class="hero">
 <div class="container">
 <div class="row align-items-center">
 
 <div class="col-md-6">
 <h1>Pretty & Elegant</h1>
 <p>Website aesthetic premium dengan nuansa pink modern, lucu, lembut, dan disukai perempuan.</p>
-<!-- FIX #3: hapus class "btn" supaya tidak bentrok dengan Bootstrap -->
-<button class="btn-pink">Explore Now</button>
+<button class="btn btn-pink" onclick="alert('Hai sayangkuu! 💕 Kamu cantik banget hari ini ✨')">Explore Now</button>
 </div>
 
 <div class="col-md-6 text-center">
-<!-- FIX #4: tambahkan alt attribute pada gambar -->
-<img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" class="img-fluid" width="420" alt="Sweet Girl Illustration">
+<img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" class="img-fluid" width="420" alt="Pretty girl illustration">
 </div>
 
 </div>
 </div>
 </section>
 
-<!-- Features -->
-<section class="py-5">
+<!-- Features Section -->
+<section id="features" class="py-5">
 <div class="container">
-<h2 class="text-center text-danger fw-bold mb-5">Premium Features</h2>
+<h2 class="text-center text-danger fw-bold mb-5">✨ Premium Features ✨</h2>
 
 <div class="row g-4">
 
 <div class="col-md-4">
-<!-- FIX #5: ganti class "card" ke "custom-card" -->
-<div class="custom-card text-center">
+<div class="card text-center">
 <h3>💖 Cute Design</h3>
-<p>Warna pastel aesthetic dan feminim.</p>
+<p>Warna pastel aesthetic dan feminim, bikin betah liatnya.</p>
 </div>
 </div>
 
 <div class="col-md-4">
-<div class="custom-card text-center">
+<div class="card text-center">
 <h3>✨ Luxury Style</h3>
-<p>Tampilan modern seperti website premium.</p>
+<p>Tampilan modern seperti website premium kelas atas.</p>
 </div>
 </div>
 
 <div class="col-md-4">
-<div class="custom-card text-center">
+<div class="card text-center">
 <h3>📱 Responsive</h3>
-<p>Bagus di HP, laptop dan tablet.</p>
+<p>Bagus di HP, laptop, dan tablet. Nggak pecah!</p>
 </div>
 </div>
 
 </div>
+</div>
+</section>
+
+<!-- Gallery Section Sederhana -->
+<section id="gallery" class="py-5">
+<div class="container">
+<h2 class="text-center text-danger fw-bold mb-5">📸 Gallery Cute 📸</h2>
+<div class="row g-3">
+<div class="col-md-4">
+<img src="https://cdn-icons-png.flaticon.com/512/1053/1053244.png" class="img-fluid rounded-4 shadow" alt="flower">
+</div>
+<div class="col-md-4">
+<img src="https://cdn-icons-png.flaticon.com/512/3063/3063712.png" class="img-fluid rounded-4 shadow" alt="heart">
+</div>
+<div class="col-md-4">
+<img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" class="img-fluid rounded-4 shadow" alt="star">
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5">
+<div class="container text-center">
+<h2 class="text-danger fw-bold">💌 Contact Me 💌</h2>
+<p class="mb-4">Ada yang mau disampaikan? Yuk chat aku!</p>
+<button class="btn btn-pink" onclick="alert('Halo cintaku! Makasih sudah menghubungi aku ya 💕')">Kirim Pesan</button>
 </div>
 </section>
 
 <!-- Footer -->
 <footer class="text-center py-4">
-<p class="mb-0">© 2026 Rara Cantik | Made with 💕</p>
+<p class="mb-0">© 2025 Rara Cantik | Made with 💖 sepenuh hati</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// Efek tambahan: hearts muncul saat scroll (opsional)
+window.addEventListener('scroll', function() {
+    let hearts = document.querySelectorAll('.heart');
+    hearts.forEach(heart => {
+        let speed = heart.style.animationDuration;
+        // efek kecil biar lebih hidup
+    });
+});
+
+// Smooth scroll untuk navigasi
+document.querySelectorAll('.nav-link').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if(targetId && targetId !== '#') {
+            e.preventDefault();
+            const target = document.querySelector(targetId);
+            if(target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    });
+});
+</script>
 
 </body>
 </html>
