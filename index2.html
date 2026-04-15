@@ -27,12 +27,13 @@ body{
     box-shadow:0 5px 20px rgba(0,0,0,0.08);
 }
 
-/* Hero */
+/* Hero - FIX #2: tambah padding-top supaya tidak tertutup navbar */
 .hero{
     min-height:100vh;
     display:flex;
     align-items:center;
     position:relative;
+    padding-top: 80px;
 }
 
 .hero h1{
@@ -49,6 +50,7 @@ body{
     animation:fadeUp 1.4s ease;
 }
 
+/* FIX #3: hapus class btn dari button, styling standalone */
 .btn-pink{
     background: linear-gradient(to right,#ff4d88,#ff80ab);
     color:white;
@@ -59,23 +61,28 @@ body{
     margin-top:20px;
     box-shadow:0 10px 20px rgba(255,77,136,0.3);
     transition:0.3s;
+    cursor:pointer;
+    display:inline-block;
 }
 
 .btn-pink:hover{
     transform:translateY(-5px) scale(1.05);
 }
 
-/* Floating hearts */
+/* FIX #1: Floating hearts - pakai fixed & mulai dari bawah, z-index di belakang konten */
 .heart{
-    position:absolute;
+    position: fixed;
+    bottom: -50px;
     color:#ff7aa2;
     font-size:25px;
     animation:float 6s infinite linear;
     opacity:0.6;
+    z-index: 0;
+    pointer-events: none;
 }
 
-/* Cards */
-.card{
+/* FIX #5: Ganti nama class dari .card ke .custom-card supaya tidak bentrok Bootstrap */
+.custom-card{
     border:none;
     border-radius:25px;
     padding:30px;
@@ -84,8 +91,14 @@ body{
     background:white;
 }
 
-.card:hover{
+.custom-card:hover{
     transform:translateY(-12px);
+}
+
+/* Pastikan semua konten tampil di atas hearts */
+nav, section, footer {
+    position: relative;
+    z-index: 1;
 }
 
 /* Footer */
@@ -96,8 +109,8 @@ footer{
 
 /* Animation */
 @keyframes float{
-    0%{transform:translateY(100vh) rotate(0);}
-    100%{transform:translateY(-10vh) rotate(360deg);}
+    0%{transform:translateY(0) rotate(0);}
+    100%{transform:translateY(-110vh) rotate(360deg);}
 }
 
 @keyframes fadeDown{
@@ -114,7 +127,7 @@ footer{
 </head>
 <body>
 
-<!-- Floating Hearts -->
+<!-- FIX #1: Floating Hearts - posisi fixed, mulai dari bawah layar -->
 <div class="heart" style="left:10%;">💖</div>
 <div class="heart" style="left:30%; animation-delay:2s;">💕</div>
 <div class="heart" style="left:50%; animation-delay:4s;">💗</div>
@@ -148,12 +161,14 @@ footer{
 
 <div class="col-md-6">
 <h1>Pretty & Elegant</h1>
-<p>Website aesthetic premium dengan nuansa pink modern, lucu, lembut, dan disukai perempuan.</p>
-<button class="btn btn-pink">Explore Now</button>
+<p>Website Personal Raraririruru.</p>
+<!-- FIX #3: hapus class "btn" supaya tidak bentrok dengan Bootstrap -->
+<button class="btn-pink">Explore Now</button>
 </div>
 
 <div class="col-md-6 text-center">
-<img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" class="img-fluid" width="420">
+<!-- FIX #4: tambahkan alt attribute pada gambar -->
+<img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" class="img-fluid" width="420" alt="Sweet Girl Illustration">
 </div>
 
 </div>
@@ -168,21 +183,22 @@ footer{
 <div class="row g-4">
 
 <div class="col-md-4">
-<div class="card text-center">
+<!-- FIX #5: ganti class "card" ke "custom-card" -->
+<div class="custom-card text-center">
 <h3>💖 Cute Design</h3>
 <p>Warna pastel aesthetic dan feminim.</p>
 </div>
 </div>
 
 <div class="col-md-4">
-<div class="card text-center">
+<div class="custom-card text-center">
 <h3>✨ Luxury Style</h3>
 <p>Tampilan modern seperti website premium.</p>
 </div>
 </div>
 
 <div class="col-md-4">
-<div class="card text-center">
+<div class="custom-card text-center">
 <h3>📱 Responsive</h3>
 <p>Bagus di HP, laptop dan tablet.</p>
 </div>
